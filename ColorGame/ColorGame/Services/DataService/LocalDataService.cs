@@ -8,7 +8,7 @@ namespace ColorGame.Services
 {
     public class LocalDataService : ILocalDataService
     {
-        public User CurrentUser { get; set; }
+        public User CurrentUser { get; private set; }
         public List<ScoreCard> ScoreCards { get; set; }
 
         public LocalDataService()
@@ -24,6 +24,15 @@ namespace ColorGame.Services
                 new ScoreCard(){Id = Guid.NewGuid(), User = new User( "Ajay G"), AverageReactionTime = new DateTime(70000000000)},
                 new ScoreCard(){Id = Guid.NewGuid(), User = new User( "Ajay H"), AverageReactionTime = new DateTime(6000000000)},
             };
+        }
+
+        public void SetUser(User user)
+        {
+            CurrentUser = user;
+        }
+        public void LoadLastUser()
+        {
+            //CurrentUser = user;
         }
     }
 }

@@ -7,7 +7,10 @@ namespace ColorGame.Services
 {
     public interface ILocalDataService
     {
-        User CurrentUser { get; set; }
+        User CurrentUser { get; }
+        void SetUser(User user);
+
+
         List<ScoreCard> ScoreCards { get; set; }
     }
 }

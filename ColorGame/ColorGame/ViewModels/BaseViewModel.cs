@@ -26,9 +26,11 @@ namespace ColorGame.ViewModels
 
         protected readonly IErrorManagementService _errorManagementService;
         protected readonly INavigationService _navigationService;
+        protected readonly ILocalDataService _localDataService;
         public BaseViewModel()
         {
             _navigationService = DependencyService.Resolve<INavigationService>();
+            _localDataService = DependencyService.Resolve<ILocalDataService>();
             _errorManagementService = DependencyService.Resolve<IErrorManagementService>();
 
             GoToCommand = new Command<string>(value => GoTo(value));

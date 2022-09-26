@@ -9,8 +9,6 @@ namespace ColorGame.ViewModels
 {
     public class LoginViewModel : BaseViewModel
     {
-        private User _user = new User();
-
         string _name;
         public string Name
         {
@@ -38,13 +36,22 @@ namespace ColorGame.ViewModels
             {
                 Name = string.Empty;
                 //TODO:Get from localization text resources 
-                await App.Current.MainPage.DisplayAlert("Sorry", "We need a name!", "Ok"); 
+                await App.Current.MainPage.DisplayAlert("Sorry", "We need a name!", "Ok");
                 return;
             }
 
             //This is where usually a call is made to the Auth Service and a successful retrun will log user in.
-            _user.Id = Guid.NewGuid();
-            GoTo("//"+nameof(HomePage));
+
+            var user = new User()
+            {
+                Id = Guid.NewGuid(),
+                Name = Name,
+                Age = Age
+            };
+
+            _localDataService.SetUser(user);
+
+            GoTo("//" + nameof(HomePage));
         }
     }
 }
