@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:local="clr-namespace:ColorGame.Views"
+       xmlns:vm="clr-namespace:ColorGame.ViewModels"
+       Title="Color Game"
+       x:Class="ColorGame.AppShell">
+    
+    <Shell.BindingContext>
+        <vm:BaseViewModel x:Name="vm" />
+    </Shell.BindingContext>
+    
+    <TabBar>
+        <ShellContent Route="LoginPage"
+                      ContentTemplate="{DataTemplate local:LoginPage}" />
+    </TabBar>
+
+    <FlyoutItem Title="Home">
+        <ShellContent Route="HomePage"
+                      ContentTemplate="{DataTemplate local:HomePage}" />
+    </FlyoutItem>
+    <FlyoutItem Title="Start Game">
+        <ShellContent Route="GamePage"
+                      ContentTemplate="{DataTemplate local:GameDetailsPage}"/>
+    </FlyoutItem>
+
+    <FlyoutItem Title="Logout">
+        <ShellContent Route="LoginPage"
+                      ContentTemplate="{DataTemplate local:LoginPage}" />
+
+    </FlyoutItem>
+</Shell>

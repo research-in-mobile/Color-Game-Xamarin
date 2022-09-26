@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:ColorGame.ViewModels"
+             x:Class="ColorGame.Views.HomePage">
+
+    <ContentPage.BindingContext>
+        <vm:HomeViewModel x:Name="vm" />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+
+        <RefreshView Command="{Binding LoadScoreCardsCommand}"
+                     IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+
+            <CollectionView x:Name="ItemsListView"
+                            ItemsSource="{Binding ScoreCards}"
+                            SelectionMode="None">
+                <CollectionView.ItemTemplate>
+
+                    <DataTemplate>
+                        <StackLayout Orientation="Horizontal"
+                                     Padding="10">
+
+                            <Label Text="{Binding Name}"
+                                   LineBreakMode="NoWrap"
+                                   FontSize="20" />
+
+                            <Label Text="{Binding AverageReactionTime,StringFormat='{0:HH:mm:ss}'}"
+                                   LineBreakMode="NoWrap"
+                                   FontSize="24" />
+
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer NumberOfTapsRequired="1"
+                                                      Command="{Binding Source={RelativeSource AncestorType={x:Type vm:HomeViewModel}}, Path=ScoreCardTapped}"
+                                                      CommandParameter="{Binding .}">
+                                </TapGestureRecognizer>
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+                    </DataTemplate>
+
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+
+    </ContentPage.Content>
+</ContentPage>

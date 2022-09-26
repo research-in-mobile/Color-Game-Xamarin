@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                    x:Class="ColorGame.Themes.LightThemeColors">
+
+    <Color x:Key="TabBarBackground">#674ea7</Color>
+    <Color x:Key="TabIconUnselected">#404450</Color>
+    <Color x:Key="TabIconSelected">#674ea7</Color>
+
+    <Color x:Key="HomeBackgroundColor">#674ea7</Color>
+    <Color x:Key="BackgroundColor">#FFFFFF</Color>
+    <Color x:Key="TransparentForegroundColor">#33a394ca</Color>
+    <Color x:Key="AltBackgroundColor">#a394ca</Color>
+
+    <Color x:Key="PrimaryDarkColor">#291f42</Color>
+    <Color x:Key="PrimaryColor">#674ea7</Color>
+    <Color x:Key="SecondaryColor">#45818e</Color>
+    <Color x:Key="TransparentWhite">#43FFFFFF</Color>
+
+    <Color x:Key="HighlightColor">#f1c232</Color>
+    <Color x:Key="TransparentHighlightColor">#20f1c232</Color>
+    <Color x:Key="PositiveColor">#6aa84f</Color>
+    <Color x:Key="TransparentPositiveColor">#CA6aa84f</Color>
+    <Color x:Key="Transparent2PositiveColor">#696aa84f</Color>
+    <Color x:Key="NegativeColor">#a64d79</Color>
+    <Color x:Key="TransparentNegativeColor">#CAa64d79</Color>
+    <Color x:Key="Transparent2NegativeColor">#69a64d79</Color>
+    <Color x:Key="NegativeButtonColor">#40a64d79</Color>
+
+
+    <Color x:Key="PrimaryTextColor">#291f42</Color>
+    <Color x:Key="SecondaryTextColor">#9C9C9C</Color>
+    <Color x:Key="AltTextColor">#FFFFFF</Color>
+
+    <Color x:Key="InactiveColor">#00000029</Color>
+    <Color x:Key="ActiveColor">#674ea7</Color>
+
+    <Color x:Key="DarkTransparentColor">#CF140f21</Color>
+
+</ResourceDictionary>
