@@ -12,7 +12,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="NewFolder\" />
     <Folder Include="Views\Converters\" />
     <Folder Include="Behaviors\" />
     <Folder Include="Views\Themes\LightTheme\" />

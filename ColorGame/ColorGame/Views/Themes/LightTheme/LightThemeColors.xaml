@@ -37,4 +37,9 @@
 
     <Color x:Key="DarkTransparentColor">#CF140f21</Color>
 
+    <Color x:Key="GameColorRed">#FF0000</Color>
+    <Color x:Key="GameColorYello">#FFFF00</Color>
+    <Color x:Key="GameColorRed">#0000FF</Color>
+
+
 </ResourceDictionary>
