@@ -68,7 +68,7 @@ namespace ColorGame.Services
             };
         }
 
-        public void SetUser(User user)
+        public void SetCurrentUser(User user)
         {
             LastStoredUser = user;
             CurrentUser = user;

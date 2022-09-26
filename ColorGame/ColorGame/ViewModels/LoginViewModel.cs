@@ -16,8 +16,8 @@ namespace ColorGame.ViewModels
             set { SetProperty(ref _name, value); }
         }
 
-        int _age;
-        public int Age
+        int? _age;
+        public int? Age
         {
             get { return _age; }
             set { SetProperty(ref _age, value); }
@@ -33,7 +33,7 @@ namespace ColorGame.ViewModels
             if (_lastLoggedUser != null)
             {
                 Name = _lastLoggedUser.Name;
-                Age = _lastLoggedUser.Age;
+                Age = _lastLoggedUser.Age.Value;
             }
 
             LoginCommand = new Command(OnLogin);
@@ -50,9 +50,9 @@ namespace ColorGame.ViewModels
             }
 
             //This is where usually a call is made to the Auth Service and a successful retrun will log user in.
-            if (_lastLoggedUser != null)
+            if (_lastLoggedUser != null && _lastLoggedUser.Name == Name)
             {
-                _localDataService.SetUser(_lastLoggedUser);
+                _localDataService.SetCurrentUser(_lastLoggedUser);
 
             }
             else
@@ -64,7 +64,7 @@ namespace ColorGame.ViewModels
                     Age = Age
                 };
 
-                _localDataService.SetUser(user);
+                _localDataService.SetCurrentUser(user);
             }
 
             GoTo("//" + nameof(HomePage));

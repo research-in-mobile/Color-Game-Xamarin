@@ -21,7 +21,7 @@ namespace ColorGame.Services
             throw new NotImplementedException();
         }
 
-        public void SetUser(User user)
+        public void SetCurrentUser(User user)
         {
             throw new NotImplementedException();
         }
