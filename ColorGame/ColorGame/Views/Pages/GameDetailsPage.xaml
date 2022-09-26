@@ -23,8 +23,8 @@
             
             
             <StackLayout Orientation="Horizontal">
-                <Button Text="Start Game"
-                        Command="{Binding StartGameCommand}"
+                <Button Text="Go Back"
+                        Command="{Binding GoBackCommand}"
                         HorizontalOptions="FillAndExpand" />
             </StackLayout>
         </StackLayout>
