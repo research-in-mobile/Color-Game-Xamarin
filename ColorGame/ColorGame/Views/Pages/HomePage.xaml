@@ -74,7 +74,7 @@
                     FontSize="24"
                     FontAttributes="Bold"
                     HeightRequest="100"
-                    Command="{Binding StartGameCommand}"
+                    Command="{Binding GoToGameCommand}"
                     HorizontalOptions="FillAndExpand" />
         </StackLayout>
 

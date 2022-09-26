@@ -20,14 +20,9 @@ namespace ColorGame.ViewModels
             }
         }
 
-
-        private readonly ILocalDataService _localDataService;
         public GameDetailsViewModels()
         {
-            _localDataService = DependencyService.Resolve<ILocalDataService>();
             SelectedScoreCard = _navigationService.GetNavigationItem<ScoreCard>();
-
-
         }
 
 

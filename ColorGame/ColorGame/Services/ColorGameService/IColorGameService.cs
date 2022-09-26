@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ColorGame.DTOs;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -6,8 +7,11 @@ namespace ColorGame.Services
 {
     public interface IColorGameService
     {
-        void StartNewGame();
-        int GetNextColor();
-        void SaveGameResults();
+        ColorGameService StartNewGame();
+        ColorGameService StoreUserSelection(ColorIndex index, TimeSpan deltaTimeSpan);
+        ColorGameService SaveGameResults();
+
+        ColorIndex? GetNextColorIndex();
+
     }
 }

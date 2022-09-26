@@ -20,7 +20,7 @@ namespace ColorGame.ViewModels
             set { SetProperty(ref _title, value); }
         }
 
-        public Command StartGameCommand { get; set; }
+        public Command GoToGameCommand { get; set; }
         public Command GoBackCommand { get; set; }
         public Command<string> GoToCommand { get; set; }
 
@@ -35,7 +35,7 @@ namespace ColorGame.ViewModels
 
             GoToCommand = new Command<string>(value => GoTo(value));
             GoBackCommand = new Command(GoBack);
-            StartGameCommand = new Command(value => GoTo($"{nameof(GamePage)}", true));
+            GoToGameCommand = new Command(value => GoTo($"{nameof(GamePage)}", true));
         }
 
         public virtual void GoBack()

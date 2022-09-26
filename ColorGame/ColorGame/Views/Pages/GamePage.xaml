@@ -14,11 +14,87 @@
 
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                   VerticalOptions="CenterAndExpand"
-                   HorizontalOptions="CenterAndExpand"
-                   BackgroundColor="{Binding CurrentShowingColor, 
-                        Converter={StaticResource ColorIndexToColorConverter}}" />
+            <Button Text="Start Game"
+                    IsVisible="{Binding HasGameStarted,
+                        Converter={StaticResource InverseBoolConverter}}"
+                    FontSize="24"
+                    FontAttributes="Bold"
+                    HeightRequest="100"
+                    Command="{Binding StartNewGameCommand}"
+                    HorizontalOptions="FillAndExpand">
+
+            </Button>
+
+
+
+            <BoxView IsVisible="{Binding HasGameStarted}"
+                     VerticalOptions="CenterAndExpand"
+                     HorizontalOptions="CenterAndExpand"
+                     Color="{Binding CurrentShowingColor, 
+                                Converter={StaticResource ColorIndexToColorConverter}}"
+                     WidthRequest="200"
+                     HeightRequest="200">
+                <BoxView.Effects>
+                    <views:RoundEffect />
+                </BoxView.Effects>
+            </BoxView>
+
+
+            <Grid Margin="10"
+                  ColumnDefinitions="*,*,*"
+                  RowDefinitions="120"
+                  IsVisible="{Binding HasGameStarted}">
+
+                <Button Text="RED"
+                        Grid.Column="0"
+                        HeightRequest="50"
+                        WidthRequest="50"
+                        BackgroundColor="Red"
+                        TextColor="{StaticResource AltTextColor}"
+                        FontSize="24"
+                        FontAttributes="Bold"
+                        Command="{Binding UserColorSelectionCommand}"
+                        CommandParameter="0"
+                        HorizontalOptions="FillAndExpand">
+                    <Button.Effects>
+                        <views:RoundEffect />
+                    </Button.Effects>
+                </Button>
+
+                <Button Text="YELLOW"
+                        Grid.Column="1"
+                        HeightRequest="50"
+                        WidthRequest="50"
+                        BackgroundColor="Yellow"
+                        TextColor="{StaticResource PrimaryDarkColor}"
+                        FontSize="24"
+                        FontAttributes="Bold"
+                        Command="{Binding UserColorSelectionCommand}"
+                        CommandParameter="1"
+                        HorizontalOptions="FillAndExpand">
+                    <Button.Effects>
+                        <views:RoundEffect />
+                    </Button.Effects>
+                </Button>
+
+                <Button Text="BLUE"
+                        Grid.Column="2"
+                        HeightRequest="50"
+                        WidthRequest="50"
+                        BackgroundColor="Blue"
+                        TextColor="{StaticResource AltTextColor}"
+                        FontSize="24"
+                        FontAttributes="Bold"
+                        Command="{Binding UserColorSelectionCommand}"
+                        CommandParameter="2"
+                        HorizontalOptions="FillAndExpand">
+                    <Button.Effects>
+                        <views:RoundEffect />
+                    </Button.Effects>
+                </Button>
+            </Grid>
+
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

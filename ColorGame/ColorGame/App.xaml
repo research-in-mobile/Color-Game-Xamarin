@@ -7,6 +7,7 @@
         <ResourceDictionary Source="Views/Themes/LightTheme/LightTheme.xaml" />
 
         <views:ColorIndexToColorConverter x:Key="ColorIndexToColorConverter" />
+        <views:InverseBoolConverter x:Key="InverseBoolConverter" />
 
     </Application.Resources>
 </Application>

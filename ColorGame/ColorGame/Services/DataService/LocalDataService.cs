@@ -34,5 +34,14 @@ namespace ColorGame.Services
         {
             //CurrentUser = user;
         }
+
+        public void SaveScoreCards()
+        {
+            //TODO:
+        }
+        public void LoadScoreCards()
+        {
+            //TODO:
+        }
     }
 }

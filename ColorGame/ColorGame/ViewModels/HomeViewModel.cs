@@ -19,7 +19,6 @@ namespace ColorGame.ViewModels
         public Command LoadScoreCardsCommand { get; }
         public Command<ScoreCard> ScoreCardTapped { get; }
 
-
         private ScoreCard _selectedScoreCard;
         public ScoreCard SelectedScoreCard
         {
@@ -31,12 +30,8 @@ namespace ColorGame.ViewModels
             }
         }
 
-        private readonly ILocalDataService _localDataService;
         public HomeViewModel()
         {
-            _localDataService = DependencyService.Resolve<ILocalDataService>();
-
-
             LoadScoreCardsCommand = new Command(async () => await ExecuteLoadItemsCommand());
             ScoreCardTapped = new Command<ScoreCard>(OnSelected);
 

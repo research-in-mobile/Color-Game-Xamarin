@@ -15,24 +15,12 @@ namespace ColorGame
 
 
             DependencyService.RegisterSingleton<IErrorManagementService>(new ErrorManagementService());
-            DependencyService.RegisterSingleton<ILocalDataService>(new LocalDataService());
-
             DependencyService.RegisterSingleton<INavigationService>(new NavigationService());
             DependencyService.RegisterSingleton<ILocalDataService>(new LocalDataService());
+            DependencyService.RegisterSingleton<IColorGameService>(new ColorGameService());
 
             MainPage = new AppShell();
         }
 
-        protected override void OnStart()
-        {
-        }
-
-        protected override void OnSleep()
-        {
-        }
-
-        protected override void OnResume()
-        {
-        }
     }
 }

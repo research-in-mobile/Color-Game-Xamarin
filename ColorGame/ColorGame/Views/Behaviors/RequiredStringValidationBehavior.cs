@@ -21,7 +21,6 @@ namespace ColorGame.Behaviors
 
         void OnEntryTextChanged(object sender, TextChangedEventArgs args)
         {
-            double result;
             bool isValid = !string.IsNullOrEmpty(args.NewTextValue);
 
             ((Entry)sender).TextColor = isValid ? Color.Default : Color.Red;
