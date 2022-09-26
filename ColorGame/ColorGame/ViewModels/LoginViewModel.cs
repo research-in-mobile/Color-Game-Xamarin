@@ -10,7 +10,7 @@ namespace ColorGame.ViewModels
     public class LoginViewModel : BaseViewModel
     {
         private User _user = new User();
-        public User CurrectUser
+        public User CurrentUser
         {
             get => _user;
             set
@@ -28,12 +28,14 @@ namespace ColorGame.ViewModels
 
         private async void OnLogin()
         {
-            if (CurrectUser == null || string.IsNullOrEmpty(CurrectUser.Name))
+            if (CurrentUser == null || string.IsNullOrEmpty(CurrentUser.Name))
             {
                 await App.Current.MainPage.DisplayAlert("Sorry", "We need a name!", "Ok");
                 return;
             }
 
+            //This is where usually a call is made to the Auth Service and a successful retrun will log user in.
+            CurrentUser.Id = Guid.NewGuid();
             GoTo(nameof(HomePage));
         }
     }

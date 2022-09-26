@@ -18,9 +18,13 @@
             
             <Label Text="Name"
                    FontSize="Medium" />
-            <Entry Text="{Binding SelectedScoreCard.Name, Mode=TwoWay}"
+            <Entry Text="{Binding SelectedScoreCard.User.Name, Mode=TwoWay}"
                    FontSize="Medium" />
-            
+
+            <Label Text="Age"
+                   FontSize="Medium" />
+            <Entry Text="{Binding SelectedScoreCard.User.Age, Mode=TwoWay}"
+                   FontSize="Medium" />
             
             <StackLayout Orientation="Horizontal">
                 <Button Text="Go Back"

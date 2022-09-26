@@ -15,14 +15,14 @@ namespace ColorGame.Services
         {
             ScoreCards = new List<ScoreCard>()
             {
-                new ScoreCard(){Id = Guid.NewGuid(), Name = "Ajay A", AverageReactionTime = new DateTime(100000000)},
-                new ScoreCard(){Id = Guid.NewGuid(), Name = "Ajay B", AverageReactionTime = new DateTime(20000000000)},
-                new ScoreCard(){Id = Guid.NewGuid(), Name = "Ajay C", AverageReactionTime = new DateTime(3000000000)},
-                new ScoreCard(){Id = Guid.NewGuid(), Name = "Ajay D", AverageReactionTime = new DateTime(400000000)},
-                new ScoreCard(){Id = Guid.NewGuid(), Name = "Ajay E", AverageReactionTime = new DateTime(5000000000)},
-                new ScoreCard(){Id = Guid.NewGuid(), Name = "Ajay F", AverageReactionTime = new DateTime(100000000000)},
-                new ScoreCard(){Id = Guid.NewGuid(), Name = "Ajay G", AverageReactionTime = new DateTime(70000000000)},
-                new ScoreCard(){Id = Guid.NewGuid(), Name = "Ajay H", AverageReactionTime = new DateTime(6000000000)},
+                new ScoreCard(){Id = Guid.NewGuid(), User = new User("Ajay A"), AverageReactionTime = new DateTime(100000000)},
+                new ScoreCard(){Id = Guid.NewGuid(), User = new User( "Ajay B"), AverageReactionTime = new DateTime(20000000000)},
+                new ScoreCard(){Id = Guid.NewGuid(), User = new User( "Ajay C"), AverageReactionTime = new DateTime(3000000000)},
+                new ScoreCard(){Id = Guid.NewGuid(), User = new User( "Ajay D"), AverageReactionTime = new DateTime(400000000)},
+                new ScoreCard(){Id = Guid.NewGuid(), User = new User( "Ajay E"), AverageReactionTime = new DateTime(5000000000)},
+                new ScoreCard(){Id = Guid.NewGuid(), User = new User( "Ajay F"), AverageReactionTime = new DateTime(100000000000)},
+                new ScoreCard(){Id = Guid.NewGuid(), User = new User( "Ajay G"), AverageReactionTime = new DateTime(70000000000)},
+                new ScoreCard(){Id = Guid.NewGuid(), User = new User( "Ajay H"), AverageReactionTime = new DateTime(6000000000)},
             };
         }
     }
