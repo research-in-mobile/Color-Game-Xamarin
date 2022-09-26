@@ -4,6 +4,9 @@ using Android.App;
 using Android.Content.PM;
 using Android.Runtime;
 using Android.OS;
+using ColorGame.Services;
+using Xamarin.Forms;
+using ColorGame.Droid.Services;
 
 namespace ColorGame.Droid
 {
@@ -13,6 +16,9 @@ namespace ColorGame.Droid
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
+
+            //DependencyService.RegisterSingleton<INotificationService>(new AndroidNotificationService());
+
 
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
@@ -24,5 +30,6 @@ namespace ColorGame.Droid
 
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
+
     }
 }

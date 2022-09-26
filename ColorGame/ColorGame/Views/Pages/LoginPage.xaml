@@ -38,7 +38,7 @@
                            FontSize="14"
                            TextColor="{StaticResource PrimaryColor}" />
 
-                    <Entry Text="{Binding CurrectUser.Name}"
+                    <Entry Text="{Binding Name}"
                            FontSize="16"
                            TextColor="{StaticResource PrimaryTextColor}"
                            Placeholder="Enter your name here."
@@ -54,7 +54,7 @@
                            FontSize="14"
                            TextColor="{StaticResource PrimaryColor}" />
 
-                    <Entry Text="{Binding CurrectUser.Age}"
+                    <Entry Text="{Binding Age}"
                            Keyboard="Numeric"
                            Placeholder="Enter your age here."
                            PlaceholderColor="{StaticResource SecondaryColor}"

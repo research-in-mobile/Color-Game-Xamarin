@@ -10,17 +10,23 @@ namespace ColorGame.ViewModels
     public class LoginViewModel : BaseViewModel
     {
         private User _user = new User();
-        public User CurrentUser
+
+        string _name;
+        public string Name
         {
-            get => _user;
-            set
-            {
-                SetProperty(ref _user, value);
-            }
+            get { return _name; }
+            set { SetProperty(ref _name, value); }
         }
 
-        public Command LoginCommand { get; }
+        int _age;
+        public int Age
+        {
+            get { return _age; }
+            set { SetProperty(ref _age, value); }
+        }
 
+
+        public Command LoginCommand { get; }
         public LoginViewModel()
         {
             LoginCommand = new Command(OnLogin);
@@ -28,15 +34,17 @@ namespace ColorGame.ViewModels
 
         private async void OnLogin()
         {
-            if (CurrentUser == null || string.IsNullOrEmpty(CurrentUser.Name))
+            if (string.IsNullOrEmpty(Name))
             {
-                await App.Current.MainPage.DisplayAlert("Sorry", "We need a name!", "Ok");
+                Name = string.Empty;
+                //TODO:Get from localization text resources 
+                await App.Current.MainPage.DisplayAlert("Sorry", "We need a name!", "Ok"); 
                 return;
             }
 
             //This is where usually a call is made to the Auth Service and a successful retrun will log user in.
-            CurrentUser.Id = Guid.NewGuid();
-            GoTo(nameof(HomePage));
+            _user.Id = Guid.NewGuid();
+            GoTo("//"+nameof(HomePage));
         }
     }
 }
