@@ -9,6 +9,7 @@
              xmlns:views="clr-namespace:ColorGame.Views"
              xmlns:vm="clr-namespace:ColorGame.ViewModels"
              xmlns:helpers="clr-namespace:ColorGame.Helpers"
+             xmlns:behaviors="clr-namespace:ColorGame.Behaviors"
              x:Class="ColorGame.Views.LoginPage"
              Shell.NavBarIsVisible="False"
              BackgroundColor="{StaticResource PrimaryDarkColor}"
@@ -27,21 +28,24 @@
             <Label Text="{helpers:TranslationHelper Title}"
                    FontSize="24"
                    FontAttributes="Bold"
-                   TextColor="{StaticResource PrimaryColor}" 
+                   TextColor="{StaticResource PrimaryColor}"
                    HorizontalTextAlignment="Center"
-                   Padding="0,0,0,40"/>
-            
+                   Padding="0,0,0,40" />
+
             <StackLayout Spacing="10">
                 <StackLayout Spacing="0">
                     <Label Text="Name: "
                            FontSize="14"
                            TextColor="{StaticResource PrimaryColor}" />
 
-                    <Entry Text="{Binding Name}"
+                    <Entry Text="{Binding CurrectUser.Name}"
                            FontSize="16"
-                           Placeholder="Required"
                            TextColor="{StaticResource PrimaryTextColor}"
+                           Placeholder="Enter your name here."
                            PlaceholderColor="{StaticResource SecondaryColor}">
+                        <Entry.Behaviors>
+                            <behaviors:RequiredStringValidationBehavior />
+                        </Entry.Behaviors>
                     </Entry>
                 </StackLayout>
                 <StackLayout Spacing="0">
@@ -50,10 +54,13 @@
                            FontSize="14"
                            TextColor="{StaticResource PrimaryColor}" />
 
-                    <Entry Text="{Binding Name}"
+                    <Entry Text="{Binding CurrectUser.Age}"
                            Keyboard="Numeric"
+                           Placeholder="Enter your age here."
+                           PlaceholderColor="{StaticResource SecondaryColor}"
                            FontSize="16"
                            TextColor="{StaticResource PrimaryTextColor}">
+
                     </Entry>
                 </StackLayout>
 

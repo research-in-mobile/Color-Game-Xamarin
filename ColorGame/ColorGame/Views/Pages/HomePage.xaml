@@ -5,6 +5,7 @@
              ios:Page.UseSafeArea="true"
              xmlns:views="clr-namespace:ColorGame.Views"
              xmlns:vm="clr-namespace:ColorGame.ViewModels"
+             xmlns:behaviors="clr-namespace:ColorGame.Behaviors"
              x:Class="ColorGame.Views.HomePage">
 
     <ContentPage.BindingContext>
@@ -29,6 +30,7 @@
                                 ItemsSource="{Binding ScoreCards}"
                                 SelectionMode="None"
                                 Margin="10,0">
+
                     <CollectionView.ItemTemplate>
 
                         <DataTemplate>
