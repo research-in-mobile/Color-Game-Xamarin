@@ -10,16 +10,18 @@
         <vm:BaseViewModel x:Name="vm" />
     </Shell.BindingContext>
 
-    <FlyoutItem Title="Game Room">
-        <ShellContent Route="GamePage"
-                      ContentTemplate="{DataTemplate local:GamePage}" />
-    </FlyoutItem>
+
     
     <TabBar>
         <ShellContent Route="LoginPage"
                       ContentTemplate="{DataTemplate local:LoginPage}" />
     </TabBar>
-
+    
+    <FlyoutItem Title="Game Room">
+        <ShellContent Route="GamePage"
+                      ContentTemplate="{DataTemplate local:GamePage}" />
+    </FlyoutItem>
+    
     <FlyoutItem Title="Home">
         <ShellContent Route="HomePage"
                       ContentTemplate="{DataTemplate local:HomePage}" />

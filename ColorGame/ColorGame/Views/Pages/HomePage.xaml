@@ -42,7 +42,7 @@
                                              HeightRequest="60"
                                              BackgroundColor="{StaticResource PrimaryDarkColor}">
 
-                                    <Label Text="{Binding Name}"
+                                    <Label Text="{Binding User.Name}"
                                            TextColor="{StaticResource AltTextColor}"
                                            LineBreakMode="NoWrap"
                                            FontSize="24"

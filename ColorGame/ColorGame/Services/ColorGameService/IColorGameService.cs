@@ -12,6 +12,7 @@ namespace ColorGame.Services
         ColorGameService SaveGameResults();
 
         ColorIndex? GetNextColorIndex();
+        ScoreCard GetCurrentScoreCard(User user);
 
     }
 }

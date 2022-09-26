@@ -23,10 +23,19 @@ namespace ColorGame.ViewModels
             set { SetProperty(ref _age, value); }
         }
 
+        private User _lastLoggedUser;
 
         public Command LoginCommand { get; }
         public LoginViewModel()
         {
+            _lastLoggedUser = _localDataService.CurrentUser;
+
+            if (_lastLoggedUser != null)
+            {
+                Name = _lastLoggedUser.Name;
+                Age = _lastLoggedUser.Age;
+            }
+
             LoginCommand = new Command(OnLogin);
         }
 
@@ -35,21 +44,28 @@ namespace ColorGame.ViewModels
             if (string.IsNullOrEmpty(Name))
             {
                 Name = string.Empty;
-                //TODO:Get from localization text resources 
-                await App.Current.MainPage.DisplayAlert("Sorry", "We need a name!", "Ok");
+
+                await App.Current.MainPage.DisplayAlert("Sorry", "We need a name!", "Ok"); //TODO:Get from localization text resources 
                 return;
             }
 
             //This is where usually a call is made to the Auth Service and a successful retrun will log user in.
-
-            var user = new User()
+            if (_lastLoggedUser != null)
             {
-                Id = Guid.NewGuid(),
-                Name = Name,
-                Age = Age
-            };
+                _localDataService.SetUser(_lastLoggedUser);
 
-            _localDataService.SetUser(user);
+            }
+            else
+            {
+                var user = new User()
+                {
+                    Id = Guid.NewGuid(),
+                    Name = Name,
+                    Age = Age
+                };
+
+                _localDataService.SetUser(user);
+            }
 
             GoTo("//" + nameof(HomePage));
         }

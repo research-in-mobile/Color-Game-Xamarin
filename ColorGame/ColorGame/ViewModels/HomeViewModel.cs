@@ -35,7 +35,7 @@ namespace ColorGame.ViewModels
             LoadScoreCardsCommand = new Command(async () => await ExecuteLoadItemsCommand());
             ScoreCardTapped = new Command<ScoreCard>(OnSelected);
 
-            ScoreCards = new ObservableCollection<ScoreCard>(_localDataService.ScoreCards);
+            ScoreCards = new ObservableCollection<ScoreCard>(_localDataService.ActiveScoreCards);
         }
 
         private void OnSelected(ScoreCard scoreCard)
@@ -55,7 +55,7 @@ namespace ColorGame.ViewModels
             {
                 ScoreCards.Clear();
                 //var items = await _localDataService.GetItemsAsync(true);
-                foreach (var card in _localDataService.ScoreCards)
+                foreach (var card in _localDataService.ActiveScoreCards)
                 {
                     ScoreCards.Add(card);
                 }

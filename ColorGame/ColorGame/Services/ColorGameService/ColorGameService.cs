@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Text;
 using Xamarin.Forms;
 
@@ -22,9 +23,9 @@ namespace ColorGame.Services
         public ColorGameService()
         {
             _localDataService = DependencyService.Resolve<ILocalDataService>();
-            if (_localDataService.ScoreCards == null)
+            if (_localDataService.ActiveScoreCards == null)
             {
-                _localDataService.ScoreCards = new List<ScoreCard>();
+                _localDataService.ActiveScoreCards = new List<ScoreCard>();
             }
 
         }
@@ -51,9 +52,9 @@ namespace ColorGame.Services
 
         public ColorGameService SaveGameResults()
         {
-            if (_localDataService.ScoreCards == null)
+            if (_localDataService.ActiveScoreCards == null)
             {
-                _localDataService.ScoreCards = new List<ScoreCard>();
+                _localDataService.ActiveScoreCards = new List<ScoreCard>();
             }
 
             var scoreCard = new ScoreCard()
@@ -61,7 +62,7 @@ namespace ColorGame.Services
 
             };
 
-            _localDataService.ScoreCards.Add(scoreCard);
+            _localDataService.ActiveScoreCards.Add(scoreCard);
             _localDataService.SaveScoreCards();
 
             return this;
@@ -70,14 +71,35 @@ namespace ColorGame.Services
         public ColorIndex? GetNextColorIndex()
         {
             _selectionCount++;
-            Debug.WriteLine(_selectionCount);
+
 
             Random random = new Random();
 
             if (!IsGameOver())
+            {
+                Debug.WriteLine(_selectionCount);
                 return _lastSentColorIndex = (ColorIndex)random.Next(0, _maxSupportedColorIndex);
+            }
             else
                 return null;
+        }
+
+        public ScoreCard GetCurrentScoreCard(User user)
+        {
+            long score = 0;
+            foreach (var result in _gameResults)
+            {
+                score += result.Value.ResponseTime.Ticks;
+            }
+
+            return new ScoreCard()
+            {
+                Id = Guid.NewGuid(),
+                AverageReactionTime = new TimeSpan((long)(score / _maxResponseCountPerGame)),
+                GameDateTime = DateTime.Now,
+                User = user,
+                UserSelections = _gameResults.Select(gr => gr.Value).ToList()
+            };
         }
 
         private bool IsGameOver()

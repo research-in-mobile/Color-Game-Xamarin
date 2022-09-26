@@ -1,5 +1,6 @@
 ﻿using ColorGame.DTOs;
 using ColorGame.Services;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -83,6 +84,11 @@ namespace ColorGame.ViewModels
             {
                 HasGameStarted = false;
                 _isGameOver = true;
+
+                var result = _colorGameService.GetCurrentScoreCard(_localDataService.CurrentUser);
+                //TODO: Save
+
+                App.Current.MainPage.DisplayAlert("Game Over", JsonConvert.SerializeObject(result), "Ok");
             }
 
         }

@@ -13,6 +13,6 @@ namespace ColorGame.Services
         void SaveScoreCards();
         void LoadScoreCards();
 
-        List<ScoreCard> ScoreCards { get; set; }
+        List<ScoreCard> ActiveScoreCards { get; set; }
     }
 }
