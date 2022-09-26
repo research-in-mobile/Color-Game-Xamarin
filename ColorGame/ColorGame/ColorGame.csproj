@@ -12,19 +12,28 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="NewFolder\" />
     <Folder Include="Views\Converters\" />
     <Folder Include="Behaviors\" />
-    <Folder Include="Views\Effects\" />
     <Folder Include="Views\Themes\LightTheme\" />
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="AppResources\TextResources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>TextResources.resx</DependentUpon>
+    </Compile>
     <Compile Update="Views\Pages\GameDetailsPage.xaml.cs">
       <DependentUpon>GameDetailsPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="AppResources\TextResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>TextResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\Pages\GameDetailsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>

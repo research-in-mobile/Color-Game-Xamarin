@@ -4,15 +4,31 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="true"
+             xmlns:views="clr-namespace:ColorGame.Views"
+             xmlns:vm="clr-namespace:ColorGame.ViewModels"
+             xmlns:helpers="clr-namespace:ColorGame.Helpers"
              x:Class="ColorGame.Views.LoginPage"
              Shell.NavBarIsVisible="False"
-             BackgroundColor="{StaticResource PrimaryDarkColor}">
+             BackgroundColor="{StaticResource PrimaryDarkColor}"
+             Title="{helpers:TranslationHelper Title}">
+
+    <ContentPage.BindingContext>
+        <vm:LoginViewModel x:Name="vm" />
+    </ContentPage.BindingContext>
+
     <ContentPage.Content>
         <StackLayout Padding="24,20,24,20"
                      Margin="50"
                      VerticalOptions="Center"
                      BackgroundColor="{StaticResource BackgroundColor}">
 
+            <Label Text="{helpers:TranslationHelper Title}"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   TextColor="{StaticResource PrimaryColor}" />
+            
             <StackLayout Spacing="10">
                 <StackLayout Spacing="0">
                     <Label Text="Name: "
@@ -41,8 +57,17 @@
 
                 <Button VerticalOptions="Center"
                         Text="Login"
+                        TextColor="{StaticResource AltTextColor}"
                         Command="{Binding LoginCommand}"
-                        Margin="0,40,0,0" />
+                        HorizontalOptions="Center"
+                        HeightRequest="100"
+                        WidthRequest="100"
+                        Margin="10">
+                    <Button.Effects>
+                        <views:RoundEffect />
+                    </Button.Effects>
+                </Button>
+
             </StackLayout>
 
         </StackLayout>
