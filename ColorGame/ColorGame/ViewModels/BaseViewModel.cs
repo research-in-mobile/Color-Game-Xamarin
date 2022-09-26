@@ -1,6 +1,7 @@
 ﻿using ColorGame.DTOs;
 using ColorGame.Helpers;
 using ColorGame.Services;
+using ColorGame.Views;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,13 +13,14 @@ namespace ColorGame.ViewModels
 {
     public class BaseViewModel : BaseBindable
     {
-        string title = string.Empty;
+        string _title = string.Empty;
         public string Title
         {
-            get { return title; }
-            set { SetProperty(ref title, value); }
+            get { return _title; }
+            set { SetProperty(ref _title, value); }
         }
 
+        public Command StartGameCommand { get; set; }
         public Command GoBackCommand { get; set; }
         public Command<string> GoToCommand { get; set; }
 
@@ -29,7 +31,9 @@ namespace ColorGame.ViewModels
             _navigationService = DependencyService.Resolve<INavigationService>();
             _errorManagementService = DependencyService.Resolve<IErrorManagementService>();
 
+            GoToCommand = new Command<string>(value => GoTo(value));
             GoBackCommand = new Command(GoBack);
+            StartGameCommand = new Command(value => GoTo($"{nameof(GamePage)}", true));
         }
 
         public virtual void GoBack()

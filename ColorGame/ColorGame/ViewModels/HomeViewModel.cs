@@ -43,12 +43,13 @@ namespace ColorGame.ViewModels
             ScoreCards = new ObservableCollection<ScoreCard>(_localDataService.ScoreCards);
         }
 
-        private async void OnSelected(ScoreCard scoreCard)
+        private void OnSelected(ScoreCard scoreCard)
         {
             if (scoreCard == null)
                 return;
 
-            await Shell.Current.GoToAsync($"{nameof(GameDetailsPage)}?{nameof(GameDetailsViewModels.ScoreCardId)}={scoreCard.Id}");
+            _navigationService.StoreNavigationItem(scoreCard);
+            GoTo($"{nameof(GameDetailsPage)}", true);
         }
 
         private async Task ExecuteLoadItemsCommand()

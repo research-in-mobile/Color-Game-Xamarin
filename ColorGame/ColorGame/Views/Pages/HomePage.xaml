@@ -13,38 +13,70 @@
 
     <ContentPage.Content>
 
-        <RefreshView Command="{Binding LoadScoreCardsCommand}"
-                     IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+        <StackLayout Orientation="Vertical">
 
-            <CollectionView x:Name="ItemsListView"
-                            ItemsSource="{Binding ScoreCards}"
-                            SelectionMode="None">
-                <CollectionView.ItemTemplate>
+            <Label Text="Leaderboard"
+                   LineBreakMode="NoWrap"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   TextColor="{StaticResource PrimaryDarkColor}"
+                   Padding="34,10" />
 
-                    <DataTemplate>
-                        <StackLayout Orientation="Horizontal"
-                                     Padding="10">
+            <RefreshView Command="{Binding LoadScoreCardsCommand}"
+                         IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
 
-                            <Label Text="{Binding Name}"
-                                   LineBreakMode="NoWrap"
-                                   FontSize="20" />
+                <CollectionView x:Name="ItemsListView"
+                                ItemsSource="{Binding ScoreCards}"
+                                SelectionMode="None"
+                                Margin="10,0">
+                    <CollectionView.ItemTemplate>
 
-                            <Label Text="{Binding AverageReactionTime,StringFormat='{0:HH:mm:ss}'}"
-                                   LineBreakMode="NoWrap"
-                                   FontSize="24" />
+                        <DataTemplate>
+                            <Frame Margin="10,10"
+                                   Padding="1"
+                                   CornerRadius="10">
+                                <StackLayout Orientation="Horizontal"
+                                             Padding="24,10"
+                                             HeightRequest="60"
+                                             BackgroundColor="{StaticResource PrimaryDarkColor}">
 
-                            <StackLayout.GestureRecognizers>
-                                <TapGestureRecognizer NumberOfTapsRequired="1"
-                                                      Command="{Binding Source={RelativeSource AncestorType={x:Type vm:HomeViewModel}}, Path=ScoreCardTapped}"
-                                                      CommandParameter="{Binding .}">
-                                </TapGestureRecognizer>
-                            </StackLayout.GestureRecognizers>
-                        </StackLayout>
-                    </DataTemplate>
+                                    <Label Text="{Binding Name}"
+                                           TextColor="{StaticResource AltTextColor}"
+                                           LineBreakMode="NoWrap"
+                                           FontSize="24"
+                                           VerticalTextAlignment="Center" />
 
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-        </RefreshView>
+                                    <Label Text="{Binding AverageReactionTime,StringFormat='{0:HH:mm:ss}'}"
+                                           TextColor="{StaticResource AltTextColor}"
+                                           FontSize="24"
+                                           VerticalTextAlignment="Center"
+                                           HorizontalTextAlignment="End"
+                                           HorizontalOptions="EndAndExpand" />
+
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer NumberOfTapsRequired="1"
+                                                              Command="{Binding Source={RelativeSource AncestorType={x:Type vm:HomeViewModel}}, Path=ScoreCardTapped}"
+                                                              CommandParameter="{Binding .}">
+                                        </TapGestureRecognizer>
+                                    </StackLayout.GestureRecognizers>
+                                </StackLayout>
+                            </Frame>
+
+                        </DataTemplate>
+
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </RefreshView>
+
+            <Button Text="Start Game"
+                    FontSize="24"
+                    FontAttributes="Bold"
+                    HeightRequest="100"
+                    Command="{Binding StartGameCommand}"
+                    HorizontalOptions="FillAndExpand" />
+        </StackLayout>
+
+
 
     </ContentPage.Content>
 </ContentPage>

@@ -5,17 +5,20 @@
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              ios:Page.UseSafeArea="true"
              xmlns:views="clr-namespace:ColorGame.Views"
-             xmlns:vm="clr-namespace:ColorGame.ViewModels">
+             xmlns:vm="clr-namespace:ColorGame.ViewModels"
+             Shell.PresentationMode="Modal">
 
     <ContentPage.BindingContext>
         <vm:GameViewModel x:Name="vm" />
     </ContentPage.BindingContext>
-    
+
     <ContentPage.Content>
         <StackLayout>
             <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+                   VerticalOptions="CenterAndExpand"
+                   HorizontalOptions="CenterAndExpand"
+                   BackgroundColor="{Binding CurrentShowingColor, 
+                        Converter={StaticResource ColorIndexToColorConverter}}" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
