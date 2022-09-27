@@ -22,7 +22,7 @@
                        FontSize="24"
                        FontAttributes="Bold"
                        TextColor="{StaticResource PrimaryDarkColor}"
-                       Padding="34,10" />
+                       Padding="34,0" />
 
                 <Button Text="Sort"
                         WidthRequest="150"
@@ -35,7 +35,8 @@
             <SearchBar x:Name="searchBar"
                        SearchCommand="{Binding SearchCommand}"
                        SearchCommandParameter="{Binding Text, Source={x:Reference searchBar}}"
-                       TextChanged="SearchBar_TextChanged" />
+                       TextChanged="SearchBar_TextChanged" 
+                       Margin="10,0,10,10"/>
 
             <RefreshView Command="{Binding LoadScoreCardsCommand}"
                          IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
@@ -45,7 +46,6 @@
                                 Margin="10,0">
 
                     <CollectionView.ItemTemplate>
-
                         <DataTemplate>
                             <Frame Margin="10,10"
                                    Padding="1"
@@ -76,10 +76,9 @@
                                     </StackLayout.GestureRecognizers>
                                 </StackLayout>
                             </Frame>
-
                         </DataTemplate>
-
                     </CollectionView.ItemTemplate>
+                    
                 </CollectionView>
             </RefreshView>
 

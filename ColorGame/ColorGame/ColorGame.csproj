@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Views\Templates\" />
     <Folder Include="Views\Themes\LightTheme\" />
   </ItemGroup>
 
