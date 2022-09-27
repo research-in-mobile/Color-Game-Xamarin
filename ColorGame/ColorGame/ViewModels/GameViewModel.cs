@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Timers;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -24,8 +25,14 @@ namespace ColorGame.ViewModels
             get => _hasGameStarted;
             set => SetProperty(ref _hasGameStarted, value);
         }
+        public bool CanShowNextColor
+        {
+            get => _canShowNextColor;
+            set => SetProperty(ref _canShowNextColor, value);
+        }
 
         private bool _hasGameStarted;
+        private bool _canShowNextColor;
         private bool _isGameOver;
         private Stopwatch _gameTimer;
         private ColorIndex _colorShowingIndex;
@@ -38,6 +45,7 @@ namespace ColorGame.ViewModels
         {
             _isGameOver = false;
             HasGameStarted = false;
+            CanShowNextColor = false;
 
             _colorGameService = DependencyService.Resolve<IColorGameService>();
             _gameTimer = new Stopwatch();
@@ -50,14 +58,14 @@ namespace ColorGame.ViewModels
 
         private void StartNewGame()
         {
-
-            CurrentShowingColor = _colorGameService
-                .StartNewGame()
-                .GetNextColorIndex()
-                .Value;
-
             HasGameStarted = true;
+            //CanShowNextColor = false;
             _isGameOver = false;
+
+            _colorGameService.StartNewGame();
+
+            ShowNextColor();
+
             _gameTimer.Restart();
         }
         private void RecieveUserResponse(object selectionObj)
@@ -68,15 +76,23 @@ namespace ColorGame.ViewModels
 
             _colorGameService.StoreUserSelection((ColorIndex)index, _gameTimer.Elapsed);
 
+            CanShowNextColor = false;
+
             ShowNextColor();
         }
-        private void ShowNextColor()
+        private async void ShowNextColor()
         {
             if (_isGameOver) return;
+
+            CanShowNextColor = false;
 
             var colorIndex = _colorGameService.GetNextColorIndex();
             if (colorIndex.HasValue)
             {
+                await Task.Delay(1000);
+                CanShowNextColor = true;
+                RaisePropertyChanged(nameof(CanShowNextColor));
+
                 CurrentShowingColor = colorIndex.Value;
                 _gameTimer.Restart();
             }
@@ -88,7 +104,7 @@ namespace ColorGame.ViewModels
                 var result = _colorGameService.GetCurrentScoreCard(_localDataService.CurrentUser);
                 _colorGameService.SaveGameResults(result);
 
-                App.Current.MainPage.DisplayAlert("Game Over", JsonConvert.SerializeObject(result), "Ok");
+                await App.Current.MainPage.DisplayAlert("Game Over", JsonConvert.SerializeObject(result), "Ok");
             }
 
         }

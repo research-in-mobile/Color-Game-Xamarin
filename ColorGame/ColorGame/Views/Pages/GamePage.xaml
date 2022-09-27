@@ -27,7 +27,7 @@
 
 
 
-            <BoxView IsVisible="{Binding HasGameStarted}"
+            <BoxView IsVisible="{Binding CanShowNextColor}"
                      VerticalOptions="CenterAndExpand"
                      HorizontalOptions="CenterAndExpand"
                      Color="{Binding CurrentShowingColor, 
@@ -43,7 +43,8 @@
             <Grid Margin="10"
                   ColumnDefinitions="*,*,*"
                   RowDefinitions="120"
-                  IsVisible="{Binding HasGameStarted}">
+                  IsVisible="{Binding CanShowNextColor}"
+                  VerticalOptions="EndAndExpand">
 
                 <Button Text="RED"
                         Grid.Column="0"
