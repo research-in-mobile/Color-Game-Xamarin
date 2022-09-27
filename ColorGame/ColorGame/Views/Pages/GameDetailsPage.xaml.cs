@@ -16,5 +16,6 @@ namespace ColorGame.Views
         {
             InitializeComponent();
         }
+
     }
 }

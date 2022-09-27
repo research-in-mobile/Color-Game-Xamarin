@@ -55,17 +55,6 @@ namespace ColorGame.Services
         {
             CurrentUser = LastStoredUser;
 
-            ActiveScoreCards = new List<ScoreCard>()
-            {
-                new ScoreCard(){Id = Guid.NewGuid(), User = new User( "Ajay A"), AverageReactionTime = new TimeSpan(100000000)},
-                new ScoreCard(){Id = Guid.NewGuid(), User = new User( "Ajay B"), AverageReactionTime = new TimeSpan(20000000000)},
-                new ScoreCard(){Id = Guid.NewGuid(), User = new User( "Ajay C"), AverageReactionTime = new TimeSpan(3000000000)},
-                new ScoreCard(){Id = Guid.NewGuid(), User = new User( "Ajay D"), AverageReactionTime = new TimeSpan(400000000)},
-                new ScoreCard(){Id = Guid.NewGuid(), User = new User( "Ajay E"), AverageReactionTime = new TimeSpan(5000000000)},
-                new ScoreCard(){Id = Guid.NewGuid(), User = new User( "Ajay F"), AverageReactionTime = new TimeSpan(100000000000)},
-                new ScoreCard(){Id = Guid.NewGuid(), User = new User( "Ajay G"), AverageReactionTime = new TimeSpan(70000000000)},
-                new ScoreCard(){Id = Guid.NewGuid(), User = new User( "Ajay H"), AverageReactionTime = new TimeSpan(6000000000)},
-            };
         }
 
         public void SetCurrentUser(User user)
@@ -78,18 +67,33 @@ namespace ColorGame.Services
         {
             //TODO
         }
-        public void LoadLastUser()
+
+
+        public void StoreContext()
         {
             //TODO
         }
 
         public void SaveScoreCards()
         {
-            //TODO:
+            if (ScoreCardsFromAllTenant == null)
+                ScoreCardsFromAllTenant = new Dictionary<Guid, List<ScoreCard>>();
+
+            if (ScoreCardsFromAllTenant.ContainsKey(CurrentUser.Id))
+            {
+                ScoreCardsFromAllTenant.Remove(CurrentUser.Id);
+            }
+            ScoreCardsFromAllTenant.Add(CurrentUser.Id, ActiveScoreCards);
         }
-        public void LoadScoreCards()
+
+        public void LoadCurrentUserScoreCards()
         {
-            //TODO:
+
+            if (ScoreCardsFromAllTenant.ContainsKey(CurrentUser.Id))
+            {
+                ScoreCardsFromAllTenant.TryGetValue(CurrentUser.Id, out var scoreCards);
+                ActiveScoreCards = scoreCards;
+            }
         }
     }
 }

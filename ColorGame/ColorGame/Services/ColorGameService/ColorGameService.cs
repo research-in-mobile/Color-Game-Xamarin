@@ -50,17 +50,12 @@ namespace ColorGame.Services
             return this;
         }
 
-        public ColorGameService SaveGameResults()
+        public ColorGameService SaveGameResults(ScoreCard scoreCard)
         {
             if (_localDataService.ActiveScoreCards == null)
             {
                 _localDataService.ActiveScoreCards = new List<ScoreCard>();
-            }
-
-            var scoreCard = new ScoreCard()
-            {
-
-            };
+            }        
 
             _localDataService.ActiveScoreCards.Add(scoreCard);
             _localDataService.SaveScoreCards();

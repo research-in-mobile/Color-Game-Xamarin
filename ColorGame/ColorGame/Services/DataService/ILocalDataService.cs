@@ -11,7 +11,7 @@ namespace ColorGame.Services
         void SetCurrentUser(User user);
 
         void SaveScoreCards();
-        void LoadScoreCards();
+        void LoadCurrentUserScoreCards();
 
         List<ScoreCard> ActiveScoreCards { get; set; }
     }

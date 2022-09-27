@@ -17,10 +17,7 @@
                       ContentTemplate="{DataTemplate local:LoginPage}" />
     </TabBar>
     
-    <FlyoutItem Title="Game Room">
-        <ShellContent Route="GamePage"
-                      ContentTemplate="{DataTemplate local:GamePage}" />
-    </FlyoutItem>
+
     
     <FlyoutItem Title="Home">
         <ShellContent Route="HomePage"

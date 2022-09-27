@@ -86,13 +86,12 @@ namespace ColorGame.ViewModels
                 _isGameOver = true;
 
                 var result = _colorGameService.GetCurrentScoreCard(_localDataService.CurrentUser);
-                //TODO: Save
+                _colorGameService.SaveGameResults(result);
 
                 App.Current.MainPage.DisplayAlert("Game Over", JsonConvert.SerializeObject(result), "Ok");
             }
 
         }
-
 
     }
 }

@@ -16,5 +16,10 @@ namespace ColorGame.Views
         {
             InitializeComponent();
         }
+
+        internal void OnPageAppearing()
+        {
+
+        }
     }
 }

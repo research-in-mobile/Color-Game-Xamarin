@@ -13,12 +13,6 @@ namespace ColorGame.ViewModels
 {
     public class HomeViewModel : BaseViewModel
     {
-
-        public ObservableCollection<ScoreCard> ScoreCards { get; set; }
-
-        public Command LoadScoreCardsCommand { get; }
-        public Command<ScoreCard> ScoreCardTapped { get; }
-
         private ScoreCard _selectedScoreCard;
         public ScoreCard SelectedScoreCard
         {
@@ -30,9 +24,14 @@ namespace ColorGame.ViewModels
             }
         }
 
+        public ObservableCollection<ScoreCard> ScoreCards { get; set; }
+
+        public Command LoadScoreCardsCommand { get; }
+        public Command<ScoreCard> ScoreCardTapped { get; }
+
         public HomeViewModel()
         {
-            LoadScoreCardsCommand = new Command(async () => await ExecuteLoadItemsCommand());
+            LoadScoreCardsCommand = new Command(ExecuteLoadItemsCommand);
             ScoreCardTapped = new Command<ScoreCard>(OnSelected);
 
             ScoreCards = new ObservableCollection<ScoreCard>(_localDataService.ActiveScoreCards);
@@ -47,14 +46,14 @@ namespace ColorGame.ViewModels
             GoTo($"{nameof(GameDetailsPage)}", true);
         }
 
-        private async Task ExecuteLoadItemsCommand()
+        private void ExecuteLoadItemsCommand()
         {
             IsBusy = true;
 
             try
             {
                 ScoreCards.Clear();
-                //var items = await _localDataService.GetItemsAsync(true);
+
                 foreach (var card in _localDataService.ActiveScoreCards)
                 {
                     ScoreCards.Add(card);
@@ -62,7 +61,7 @@ namespace ColorGame.ViewModels
             }
             catch (Exception ex)
             {
-                Debug.WriteLine(ex);
+                _errorManagementService.HandleError(ex);
             }
             finally
             {
@@ -70,5 +69,9 @@ namespace ColorGame.ViewModels
             }
         }
 
+        internal void OnPageAppearing()
+        {
+            ExecuteLoadItemsCommand();
+        }
     }
 }

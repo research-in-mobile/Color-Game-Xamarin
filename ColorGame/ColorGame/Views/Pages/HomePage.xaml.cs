@@ -16,5 +16,10 @@ namespace ColorGame.Views
         {
             InitializeComponent();
         }
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            vm.OnPageAppearing();
+        }
     }
 }

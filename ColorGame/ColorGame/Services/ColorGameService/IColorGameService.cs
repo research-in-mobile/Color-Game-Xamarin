@@ -9,7 +9,8 @@ namespace ColorGame.Services
     {
         ColorGameService StartNewGame();
         ColorGameService StoreUserSelection(ColorIndex index, TimeSpan deltaTimeSpan);
-        ColorGameService SaveGameResults();
+        ColorGameService SaveGameResults(ScoreCard scoreCard);
+
 
         ColorIndex? GetNextColorIndex();
         ScoreCard GetCurrentScoreCard(User user);

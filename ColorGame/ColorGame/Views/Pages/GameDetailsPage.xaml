@@ -26,10 +26,16 @@
             <Entry Text="{Binding SelectedScoreCard.User.Age, Mode=TwoWay}"
                    FontSize="Medium" />
             
+            
             <StackLayout Orientation="Horizontal">
+                <Button Text="Save"
+                        Command="{Binding SaveCommand}"
+                        BackgroundColor="{StaticResource PrimaryColor}"/>
+                
                 <Button Text="Go Back"
                         Command="{Binding GoBackCommand}"
-                        HorizontalOptions="FillAndExpand" />
+                        BackgroundColor="{StaticResource SecondaryColor}"
+                        HorizontalOptions="FillAndExpand"/>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>
