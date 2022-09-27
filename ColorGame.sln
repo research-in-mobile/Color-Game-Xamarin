@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ColorGame.UITest", "ColorGa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ColorGame.FunctionalTest", "ColorGame.FunctionalTest\ColorGame.FunctionalTest.csproj", "{A13FD1AC-34D0-49DB-AD0C-A22EF836C92C}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{0713B19D-B2B6-4EF2-8BB2-97B7E0F31F6E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -104,6 +106,10 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{99605823-4245-4FFD-9166-28C4F5BE4876} = {0713B19D-B2B6-4EF2-8BB2-97B7E0F31F6E}
+		{A13FD1AC-34D0-49DB-AD0C-A22EF836C92C} = {0713B19D-B2B6-4EF2-8BB2-97B7E0F31F6E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1A2F05A9-9FCE-4AA8-84AA-47CC9E172CDA}
