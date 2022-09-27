@@ -20,6 +20,7 @@ namespace ColorGame.ViewModels
             set { SetProperty(ref _title, value); }
         }
 
+        public string DeviceModel => _deviceInfoService.GetDeviceModel();
         public Command GoToGameCommand { get; set; }
         public Command GoBackCommand { get; set; }
         public Command<string> GoToCommand { get; set; }
@@ -27,11 +28,13 @@ namespace ColorGame.ViewModels
         protected readonly IErrorManagementService _errorManagementService;
         protected readonly INavigationService _navigationService;
         protected readonly ILocalDataService _localDataService;
+        protected readonly IDeviceInfoService _deviceInfoService;
         public BaseViewModel()
         {
             _navigationService = DependencyService.Resolve<INavigationService>();
             _localDataService = DependencyService.Resolve<ILocalDataService>();
             _errorManagementService = DependencyService.Resolve<IErrorManagementService>();
+            _deviceInfoService = DependencyService.Resolve<IDeviceInfoService>();
 
             GoToCommand = new Command<string>(value => GoTo(value));
             GoBackCommand = new Command(GoBack);
