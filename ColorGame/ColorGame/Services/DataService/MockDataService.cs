@@ -8,35 +8,25 @@ namespace ColorGame.Services
     public class MockDataService : ILocalDataService
     {
         public User CurrentUser { get; private set; }
-
         public List<ScoreCard> ActiveScoreCards { get; set; }
 
-        public LocalDataService LoadCurrentUserScoreCards()
+
+        public ILocalDataService SetCurrentUser(User user)
         {
             throw new NotImplementedException();
         }
 
-        public LocalDataService SaveContext()
+        public ILocalDataService StoreContext()
         {
             throw new NotImplementedException();
         }
 
-        public void SetCurrentUser(User user)
+        public ILocalDataService SaveContext()
         {
             throw new NotImplementedException();
         }
 
-        LocalDataService ILocalDataService.SetCurrentUser(User user)
-        {
-            throw new NotImplementedException();
-        }
-
-        public LocalDataService StoreContext()
-        {
-            throw new NotImplementedException();
-        }
-
-        void ILocalDataService.LoadCurrentUserScoreCards()
+        public void LoadCurrentUserScoreCards()
         {
             throw new NotImplementedException();
         }

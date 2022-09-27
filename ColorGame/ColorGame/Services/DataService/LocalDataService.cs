@@ -58,10 +58,35 @@ namespace ColorGame.Services
             LoadCurrentUserScoreCards();
         }
 
-        public LocalDataService SetCurrentUser(User user)
+        public ILocalDataService SetCurrentUser(User user)
         {
             LastStoredUser = user;
             CurrentUser = user;
+
+            return this;
+        }
+        public ILocalDataService StoreContext()
+        {
+            if (Preferences.ContainsKey(nameof(ScoreCardsFromAllTenant)))
+            {
+                Preferences.Remove(nameof(ScoreCardsFromAllTenant));
+            }
+
+            var dateString = JsonConvert.SerializeObject(ScoreCardsFromAllTenant);
+            Preferences.Set(nameof(ScoreCardsFromAllTenant), dateString);
+
+            return this;
+        }
+        public ILocalDataService SaveContext()
+        {
+            if (ScoreCardsFromAllTenant == null)
+                ScoreCardsFromAllTenant = new Dictionary<Guid, List<ScoreCard>>();
+
+            if (ScoreCardsFromAllTenant.ContainsKey(CurrentUser.Id))
+            {
+                ScoreCardsFromAllTenant.Remove(CurrentUser.Id);
+            }
+            ScoreCardsFromAllTenant.Add(CurrentUser.Id, ActiveScoreCards);
 
             return this;
         }
@@ -81,32 +106,6 @@ namespace ColorGame.Services
                 ScoreCardsFromAllTenant = new Dictionary<Guid, List<ScoreCard>>();
 
             return ScoreCardsFromAllTenant;
-        }
-        public LocalDataService StoreContext()
-        {
-            if (Preferences.ContainsKey(nameof(ScoreCardsFromAllTenant)))
-            {
-                Preferences.Remove(nameof(ScoreCardsFromAllTenant));
-            }
-
-            var dateString = JsonConvert.SerializeObject(ScoreCardsFromAllTenant);
-            Preferences.Set(nameof(ScoreCardsFromAllTenant), dateString);
-
-            return this;
-        }
-
-        public LocalDataService SaveContext()
-        {
-            if (ScoreCardsFromAllTenant == null)
-                ScoreCardsFromAllTenant = new Dictionary<Guid, List<ScoreCard>>();
-
-            if (ScoreCardsFromAllTenant.ContainsKey(CurrentUser.Id))
-            {
-                ScoreCardsFromAllTenant.Remove(CurrentUser.Id);
-            }
-            ScoreCardsFromAllTenant.Add(CurrentUser.Id, ActiveScoreCards);
-
-            return this;
         }
         public void LoadCurrentUserScoreCards()
         {
