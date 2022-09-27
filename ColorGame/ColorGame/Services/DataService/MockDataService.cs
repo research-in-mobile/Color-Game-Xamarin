@@ -31,6 +31,11 @@ namespace ColorGame.Services
             throw new NotImplementedException();
         }
 
+        public User TryGetUser(string name)
+        {
+            throw new NotImplementedException();
+        }
+
         public MockDataService()
         {
             ActiveScoreCards = new List<ScoreCard>()

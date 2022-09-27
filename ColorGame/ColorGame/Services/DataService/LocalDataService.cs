@@ -3,8 +3,10 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Text;
 using Xamarin.Essentials;
+using Xamarin.Forms.Internals;
 
 namespace ColorGame.Services
 {
@@ -54,8 +56,7 @@ namespace ColorGame.Services
         public LocalDataService()
         {
             CurrentUser = LastStoredUser;
-            LoadAllTenantData();
-            LoadCurrentUserScoreCards();
+            LoadAllTenantData();            
         }
 
         public ILocalDataService SetCurrentUser(User user)
@@ -63,6 +64,7 @@ namespace ColorGame.Services
             LastStoredUser = user;
             CurrentUser = user;
 
+            LoadCurrentUserScoreCards();
             return this;
         }
         public ILocalDataService StoreContext()
@@ -119,6 +121,23 @@ namespace ColorGame.Services
 
             if (ActiveScoreCards == null)
                 ActiveScoreCards = new List<ScoreCard>();
+        }
+        public User TryGetUser(string name)
+        {
+            try
+            {
+                var scoreCard = ScoreCardsFromAllTenant?.Values?.Select(sc =>
+                sc?.FirstOrDefault(u =>
+                u.User.Name.Contains(name)))
+                    .FirstOrDefault();
+
+
+                return scoreCard?.User;
+            }
+            catch(Exception ex)
+            {
+                return null;
+            }
         }
     }
 }

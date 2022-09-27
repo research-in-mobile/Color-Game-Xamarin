@@ -9,6 +9,7 @@ namespace ColorGame.Services
     {
         User CurrentUser { get; }
         List<ScoreCard> ActiveScoreCards { get; set; }
+        User TryGetUser(string name);
 
         ILocalDataService SetCurrentUser(User user);
         ILocalDataService StoreContext();

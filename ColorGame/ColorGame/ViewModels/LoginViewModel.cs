@@ -53,16 +53,23 @@ namespace ColorGame.ViewModels
             if (_lastLoggedUser != null && _lastLoggedUser.Name == Name)
             {
                 _localDataService.SetCurrentUser(_lastLoggedUser);
-
             }
             else
             {
-                var user = new User()
+                var user = _localDataService.TryGetUser(Name);
+                if (user == null)
                 {
-                    Id = Guid.NewGuid(),
-                    Name = Name,
-                    Age = Age
-                };
+                    user = new User()
+                    {
+                        Id = Guid.NewGuid(),
+                        Name = Name,
+                        Age = Age
+                    };
+                }
+                else
+                {
+
+                }
 
                 _localDataService.SetCurrentUser(user);
             }
