@@ -25,20 +25,33 @@
 
             </Button>
 
-
-
-            <BoxView IsVisible="{Binding CanShowNextColor}"
-                     VerticalOptions="CenterAndExpand"
-                     HorizontalOptions="CenterAndExpand"
-                     Color="{Binding CurrentShowingColor, 
+            <Grid IsVisible="{Binding CanShowNextColor}"
+                  VerticalOptions="FillAndExpand"
+                  Margin="0,32">
+                <BoxView x:Name="showingColor"
+                         IsVisible="{Binding CanShowNextColor}"
+                         VerticalOptions="Center"
+                         HorizontalOptions="CenterAndExpand"
+                         Color="{Binding CurrentShowingColor, 
                                 Converter={StaticResource ColorIndexToColorConverter}}"
-                     WidthRequest="200"
-                     HeightRequest="200">
-                <BoxView.Effects>
-                    <views:RoundEffect />
-                </BoxView.Effects>
-            </BoxView>
+                         WidthRequest="200"
+                         HeightRequest="200">
+                    <BoxView.Effects>
+                        <views:RoundEffect />
+                    </BoxView.Effects>
+                </BoxView>
 
+                <Label IsVisible="{Binding IsVisible, Source={x:Reference showingColor},
+                        Converter={StaticResource InverseBoolConverter}}"
+                       Text="Ready ..."
+                       LineBreakMode="NoWrap"
+                       FontSize="36"
+                       FontAttributes="Bold"
+                       TextColor="{StaticResource PrimaryDarkColor}"
+                       HorizontalOptions="Center"
+                       VerticalOptions="CenterAndExpand"
+                       Padding="24,0" />
+            </Grid>
 
             <Grid Margin="10"
                   ColumnDefinitions="*,*,*"
