@@ -7,7 +7,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ColorGame.Android", "ColorG
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ColorGame.iOS", "ColorGame\ColorGame.iOS\ColorGame.iOS.csproj", "{5249184B-180D-4DE7-ADB2-C4E07B47D657}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ColorGame", "ColorGame\ColorGame\ColorGame.csproj", "{AF2D2CD5-0200-40ED-B3A8-F1F033B6B0D5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ColorGame", "ColorGame\ColorGame\ColorGame.csproj", "{AF2D2CD5-0200-40ED-B3A8-F1F033B6B0D5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ColorGame.UITest", "ColorGame.UITest\ColorGame.UITest.csproj", "{99605823-4245-4FFD-9166-28C4F5BE4876}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ColorGame.FunctionalTest", "ColorGame.FunctionalTest\ColorGame.FunctionalTest.csproj", "{A13FD1AC-34D0-49DB-AD0C-A22EF836C92C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -73,6 +77,30 @@ Global
 		{AF2D2CD5-0200-40ED-B3A8-F1F033B6B0D5}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
 		{AF2D2CD5-0200-40ED-B3A8-F1F033B6B0D5}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 		{AF2D2CD5-0200-40ED-B3A8-F1F033B6B0D5}.Release|iPhoneSimulator.Deploy.0 = Release|Any CPU
+		{99605823-4245-4FFD-9166-28C4F5BE4876}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99605823-4245-4FFD-9166-28C4F5BE4876}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99605823-4245-4FFD-9166-28C4F5BE4876}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{99605823-4245-4FFD-9166-28C4F5BE4876}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{99605823-4245-4FFD-9166-28C4F5BE4876}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{99605823-4245-4FFD-9166-28C4F5BE4876}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{99605823-4245-4FFD-9166-28C4F5BE4876}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99605823-4245-4FFD-9166-28C4F5BE4876}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99605823-4245-4FFD-9166-28C4F5BE4876}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{99605823-4245-4FFD-9166-28C4F5BE4876}.Release|iPhone.Build.0 = Release|Any CPU
+		{99605823-4245-4FFD-9166-28C4F5BE4876}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{99605823-4245-4FFD-9166-28C4F5BE4876}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{A13FD1AC-34D0-49DB-AD0C-A22EF836C92C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A13FD1AC-34D0-49DB-AD0C-A22EF836C92C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A13FD1AC-34D0-49DB-AD0C-A22EF836C92C}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{A13FD1AC-34D0-49DB-AD0C-A22EF836C92C}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{A13FD1AC-34D0-49DB-AD0C-A22EF836C92C}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{A13FD1AC-34D0-49DB-AD0C-A22EF836C92C}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{A13FD1AC-34D0-49DB-AD0C-A22EF836C92C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A13FD1AC-34D0-49DB-AD0C-A22EF836C92C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A13FD1AC-34D0-49DB-AD0C-A22EF836C92C}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{A13FD1AC-34D0-49DB-AD0C-A22EF836C92C}.Release|iPhone.Build.0 = Release|Any CPU
+		{A13FD1AC-34D0-49DB-AD0C-A22EF836C92C}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{A13FD1AC-34D0-49DB-AD0C-A22EF836C92C}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
