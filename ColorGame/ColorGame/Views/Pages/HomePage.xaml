@@ -16,18 +16,31 @@
 
         <StackLayout Orientation="Vertical">
 
-            <Label Text="Leaderboard"
-                   LineBreakMode="NoWrap"
-                   FontSize="24"
-                   FontAttributes="Bold"
-                   TextColor="{StaticResource PrimaryDarkColor}"
-                   Padding="34,10" />
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Leaderboard"
+                       LineBreakMode="NoWrap"
+                       FontSize="24"
+                       FontAttributes="Bold"
+                       TextColor="{StaticResource PrimaryDarkColor}"
+                       Padding="34,10" />
+
+                <Button Text="Sort"
+                        WidthRequest="150"
+                        BackgroundColor="{StaticResource SecondaryColor}"
+                        Command="{Binding ToggleLeaderboardCommand}" 
+                        HorizontalOptions="EndAndExpand"/>
+            </StackLayout>
+
+
+            <SearchBar x:Name="searchBar"
+                       SearchCommand="{Binding SearchCommand}"
+                       SearchCommandParameter="{Binding Text, Source={x:Reference searchBar}}"
+                       TextChanged="SearchBar_TextChanged" />
 
             <RefreshView Command="{Binding LoadScoreCardsCommand}"
                          IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
 
-                <CollectionView x:Name="ItemsListView"
-                                ItemsSource="{Binding ScoreCards}"
+                <CollectionView ItemsSource="{Binding FilteredScoreCards}"
                                 SelectionMode="None"
                                 Margin="10,0">
 
@@ -48,7 +61,7 @@
                                            FontSize="24"
                                            VerticalTextAlignment="Center" />
 
-                                    <Label Text="{Binding AverageReactionTime,StringFormat='{0:HH:mm:ss}'}"
+                                    <Label Text="{Binding AverageReactionTime.Ticks}"
                                            TextColor="{StaticResource AltTextColor}"
                                            FontSize="24"
                                            VerticalTextAlignment="Center"
@@ -57,7 +70,7 @@
 
                                     <StackLayout.GestureRecognizers>
                                         <TapGestureRecognizer NumberOfTapsRequired="1"
-                                                              Command="{Binding Source={RelativeSource AncestorType={x:Type vm:HomeViewModel}}, Path=ScoreCardTapped}"
+                                                              Command="{Binding Source={RelativeSource AncestorType={x:Type vm:HomeViewModel}}, Path=GotoScoreCardCommand}"
                                                               CommandParameter="{Binding .}">
                                         </TapGestureRecognizer>
                                     </StackLayout.GestureRecognizers>

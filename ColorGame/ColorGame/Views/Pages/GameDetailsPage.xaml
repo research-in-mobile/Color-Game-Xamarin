@@ -30,11 +30,12 @@
             <StackLayout Orientation="Horizontal">
                 <Button Text="Save"
                         Command="{Binding SaveCommand}"
-                        BackgroundColor="{StaticResource PrimaryColor}"/>
-                
-                <Button Text="Go Back"
-                        Command="{Binding GoBackCommand}"
                         BackgroundColor="{StaticResource SecondaryColor}"
+                        WidthRequest="150"/>
+                
+                <Button Text="Discard"
+                        Command="{Binding GoBackCommand}"
+                        BackgroundColor="{StaticResource NegativeColor}"
                         HorizontalOptions="FillAndExpand"/>
             </StackLayout>
         </StackLayout>

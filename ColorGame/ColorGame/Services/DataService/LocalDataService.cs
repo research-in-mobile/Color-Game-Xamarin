@@ -21,10 +21,10 @@ namespace ColorGame.Services
                 {
                     if (Preferences.ContainsKey(nameof(_lastStoredUser)))
                     {
-                        var lastOnlineString = Preferences.Get(nameof(_lastStoredUser), "");
-                        if (!string.IsNullOrWhiteSpace(lastOnlineString))
+                        var stringData = Preferences.Get(nameof(_lastStoredUser), "");
+                        if (!string.IsNullOrWhiteSpace(stringData))
                         {
-                            _lastStoredUser = JsonConvert.DeserializeObject<User>(lastOnlineString);
+                            _lastStoredUser = JsonConvert.DeserializeObject<User>(stringData);
                         }
                     }
                 }
@@ -54,27 +54,48 @@ namespace ColorGame.Services
         public LocalDataService()
         {
             CurrentUser = LastStoredUser;
-
+            LoadAllTenantData();
+            LoadCurrentUserScoreCards();
         }
 
-        public void SetCurrentUser(User user)
+        public LocalDataService SetCurrentUser(User user)
         {
             LastStoredUser = user;
             CurrentUser = user;
+
+            return this;
         }
 
-        public void LoadAllTenantData()
+        public Dictionary<Guid, List<ScoreCard>> LoadAllTenantData()
         {
-            //TODO
+
+            if (Preferences.ContainsKey(nameof(ScoreCardsFromAllTenant)))
+            {
+                var stringData = Preferences.Get(nameof(ScoreCardsFromAllTenant), "");
+                if (!string.IsNullOrWhiteSpace(stringData))
+                {
+                    ScoreCardsFromAllTenant = JsonConvert.DeserializeObject<Dictionary<Guid, List<ScoreCard>>>(stringData);
+                }
+            }
+            if (ScoreCardsFromAllTenant == null)
+                ScoreCardsFromAllTenant = new Dictionary<Guid, List<ScoreCard>>();
+
+            return ScoreCardsFromAllTenant;
         }
-
-
-        public void StoreContext()
+        public LocalDataService StoreContext()
         {
-            //TODO
+            if (Preferences.ContainsKey(nameof(ScoreCardsFromAllTenant)))
+            {
+                Preferences.Remove(nameof(ScoreCardsFromAllTenant));
+            }
+
+            var dateString = JsonConvert.SerializeObject(ScoreCardsFromAllTenant);
+            Preferences.Set(nameof(ScoreCardsFromAllTenant), dateString);
+
+            return this;
         }
 
-        public void SaveScoreCards()
+        public LocalDataService SaveContext()
         {
             if (ScoreCardsFromAllTenant == null)
                 ScoreCardsFromAllTenant = new Dictionary<Guid, List<ScoreCard>>();
@@ -84,16 +105,21 @@ namespace ColorGame.Services
                 ScoreCardsFromAllTenant.Remove(CurrentUser.Id);
             }
             ScoreCardsFromAllTenant.Add(CurrentUser.Id, ActiveScoreCards);
-        }
 
+            return this;
+        }
         public void LoadCurrentUserScoreCards()
         {
+            if (CurrentUser == null || ScoreCardsFromAllTenant == null) return;
 
             if (ScoreCardsFromAllTenant.ContainsKey(CurrentUser.Id))
             {
                 ScoreCardsFromAllTenant.TryGetValue(CurrentUser.Id, out var scoreCards);
                 ActiveScoreCards = scoreCards;
             }
+
+            if (ActiveScoreCards == null)
+                ActiveScoreCards = new List<ScoreCard>();
         }
     }
 }

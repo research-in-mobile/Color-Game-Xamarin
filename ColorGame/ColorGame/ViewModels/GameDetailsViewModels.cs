@@ -34,8 +34,14 @@ namespace ColorGame.ViewModels
 
             int index = _localDataService.ActiveScoreCards.FindIndex(sc => sc.Id == originalCard.Id);
             if (index != -1)
+            {
                 _localDataService.ActiveScoreCards[index] = SelectedScoreCard;
+                _localDataService
+                    .SaveContext()
+                    .StoreContext();
+            }
 
+            GoBack();
         }
 
     }

@@ -58,7 +58,8 @@ namespace ColorGame.Services
             }        
 
             _localDataService.ActiveScoreCards.Add(scoreCard);
-            _localDataService.SaveScoreCards();
+            _localDataService.SaveContext();
+            _localDataService.StoreContext();
 
             return this;
         }

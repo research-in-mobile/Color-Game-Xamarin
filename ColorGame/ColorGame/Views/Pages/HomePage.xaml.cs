@@ -21,5 +21,10 @@ namespace ColorGame.Views
             base.OnAppearing();
             vm.OnPageAppearing();
         }
+
+        private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            vm.OnSearch(searchBar.Text);
+        }
     }
 }

@@ -8,9 +8,10 @@ namespace ColorGame.Services
     public interface ILocalDataService
     {
         User CurrentUser { get; }
-        void SetCurrentUser(User user);
+        LocalDataService SetCurrentUser(User user);
 
-        void SaveScoreCards();
+        LocalDataService StoreContext();
+        LocalDataService SaveContext();
         void LoadCurrentUserScoreCards();
 
         List<ScoreCard> ActiveScoreCards { get; set; }

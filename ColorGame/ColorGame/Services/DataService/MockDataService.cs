@@ -11,17 +11,32 @@ namespace ColorGame.Services
 
         public List<ScoreCard> ActiveScoreCards { get; set; }
 
-        public void LoadCurrentUserScoreCards()
+        public LocalDataService LoadCurrentUserScoreCards()
         {
             throw new NotImplementedException();
         }
 
-        public void SaveScoreCards()
+        public LocalDataService SaveContext()
         {
             throw new NotImplementedException();
         }
 
         public void SetCurrentUser(User user)
+        {
+            throw new NotImplementedException();
+        }
+
+        LocalDataService ILocalDataService.SetCurrentUser(User user)
+        {
+            throw new NotImplementedException();
+        }
+
+        public LocalDataService StoreContext()
+        {
+            throw new NotImplementedException();
+        }
+
+        void ILocalDataService.LoadCurrentUserScoreCards()
         {
             throw new NotImplementedException();
         }
