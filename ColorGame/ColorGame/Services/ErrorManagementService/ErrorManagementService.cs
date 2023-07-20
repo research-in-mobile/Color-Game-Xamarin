@@ -9,16 +9,33 @@ namespace ColorGame.Services
     {
         public void HandleError(Exception ex)
         {
+            LocalLog(ex);
 #if RELEASE
-            Report(ex);
+            if (Connectivity.NetworkAccess == NetworkAccess.Internet)
+            {
+                SendReport(ex);
+            }
 #elif DEBUG
             Debug.WriteLine(ex);
 #endif
         }
 
-        private void Report(Exception ex)
+        private void SendReport(Exception ex)
         {
-            //TODO: Crash Report 
+            //TODO: HTTPS Crash Report
+        }
+
+        private void LocalLog(Exception ex)
+        {
+            var logFileName = CreateLogFile();
+            Debug.WriteLine("Log file created: " + logFileName);
+        }
+
+        private string CreateLogFile()
+        {
+            //TODO:
+
+            return string.Empty;
         }
     }
 }
